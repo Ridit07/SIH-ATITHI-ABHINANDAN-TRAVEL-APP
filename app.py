@@ -14,7 +14,7 @@ Budget = st.slider("Budget",10000,1000000)
 
 
 def predict():
-    float_features = [float(x) for x in [Traveller_Profile_Type, Choice_Preference, Mode_of_Travel, Budget]]
+    float_features = [float(x) for x in [Traveller Profile Type, Choice Preference, Mode of Travel, Budget]]
     final_features = [np.array(float_features)]
     prediction = model.predict(final_features)
     label = prediction[0]
@@ -29,4 +29,3 @@ def predict():
         st.success('Ohhh The costomer wont make a purchase '  + ' :thumbsup:')
 
 trigger = st.button('Predict', on_click=predict)
-
