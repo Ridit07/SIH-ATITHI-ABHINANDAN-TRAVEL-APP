@@ -24,6 +24,6 @@ def predict():
         st.success('Ohh, the customer won\'t make a purchase :thumbsdown:')
 
 
-trigger = st.button('Predict', on_click=predict)
-
+if st.button('Predict'):
+    predict()
 
