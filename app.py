@@ -1,5 +1,5 @@
 try:
-    model = pickle.load(open('decision_tree_model (1).pkl', 'rb'))
+    model = pickle.load(open('model.pkl', 'rb'))
 except FileNotFoundError:
     st.error("Model file not found.")
     st.stop()
@@ -12,7 +12,7 @@ import streamlit as st
 import numpy as np
 import pickle
 
-model = pickle.load(open('decision_tree_model (1).pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 
 st.title('Which Destination Will They Choose')
 
