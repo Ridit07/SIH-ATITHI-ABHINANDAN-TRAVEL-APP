@@ -1,3 +1,13 @@
+try:
+    model = pickle.load(open('decision_tree_model.pkl', 'rb'))
+except FileNotFoundError:
+    st.error("Model file not found.")
+    st.stop()
+except Exception as e:
+    st.error("Error loading the model: {}".format(e))
+    st.stop()
+
+
 import streamlit as st
 import numpy as np
 import pickle
@@ -13,15 +23,18 @@ Budget = st.slider("Budget", 10000, 1000000)
 
 
 def predict():
-    float_features = [float(Traveller_Profile_Type), float(Choice_Preference), float(Mode_of_Travel), float(Budget)]
-    final_features = [np.array(float_features)]
-    prediction = model.predict(final_features)
-    label = prediction[0]
+    try:
+        float_features = [float(Traveller_Profile_Type), float(Choice_Preference), float(Mode_of_Travel), float(Budget)]
+        final_features = [np.array(float_features)]
+        prediction = model.predict(final_features)
+        label = prediction[0]
 
-    if int(label) == 1:
-        st.success('Hurray!! The customer will make a purchase :thumbsup:')
-    else:
-        st.success('Ohh, the customer won\'t make a purchase :thumbsdown:')
+        if int(label) == 1:
+            st.success('Hurray!! The customer will make a purchase :thumbsup:')
+        else:
+            st.success('Ohh, the customer won\'t make a purchase :thumbsdown:')
+    except Exception as e:
+        st.error("Error during prediction: {}".format(e))
 
 
 if st.button('Predict'):
