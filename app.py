@@ -2,18 +2,19 @@ import streamlit as st
 import numpy as np
 import pickle
 
-model = pickle.load(open('project.pkl', 'rb'))
+model = pickle.load(open('decision_tree_model.pkl', 'rb'))
 
-st.title('Will the person make a purchase or not')
+st.title('which distination will he choose')
 
-PageValues = st.slider("PageValues",0.00,200.76)
-ExitRates = st.slider("ExitRates",0.000,0.200,step=0.001,format="%.3f")
-ProductRelated_Duration = st.slider("ProductRelated_Duration",0.00,15000.00)
-ProductRelated = st.slider("ProductRelated",0,200)
+Traveller Profile Type = st.slider("Traveller Profile Type",0,3)
+Choice/Preference = st.slider("Choice/Preference",0,3)
+Mode of Travel = st.slider("Mode of Travel",0,3)
+Budget = st.slider("Budget",10000,1000000)
+
 
 
 def predict():
-    float_features = [float(x) for x in [PageValues, ExitRates, ProductRelated_Duration, ProductRelated]]
+    float_features = [float(x) for x in [Traveller Profile Type, Choice/Preference, Mode of Travel, Budget]]
     final_features = [np.array(float_features)]
     prediction = model.predict(final_features)
     label = prediction[0]
