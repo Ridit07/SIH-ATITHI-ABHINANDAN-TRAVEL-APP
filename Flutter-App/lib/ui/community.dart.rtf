@@ -1,0 +1,113 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 import 'package:flutter/material.dart';\
+\
+class CommunityPage extends StatelessWidget \{\
+  @override\
+  Widget build(BuildContext context) \{\
+    return Scaffold(\
+      appBar: AppBar(\
+        title: Text('Community'),\
+      ),\
+      body: SingleChildScrollView(\
+        child: Column(\
+          crossAxisAlignment: CrossAxisAlignment.start,\
+          children: [\
+            // Post List\
+            Container(\
+              padding: EdgeInsets.all(16),\
+              child: Column(\
+                crossAxisAlignment: CrossAxisAlignment.start,\
+                children: [\
+                  // Individual Post 1\
+                  _buildPost(\
+                    username: 'User123',\
+                    postText:\
+                        'Just came back from an amazing trip to Bali!  #TravelGoals',\
+                  ),\
+                  SizedBox(height: 16),\
+                  // Individual Post 2\
+                  _buildPost(\
+                    username: 'AdventureExplorer',\
+                    postText:\
+                        'Hiking in the Himalayas was an incredible experience. Highly recommended! 
+\f1 \uc0\u9968 \u65039 
+\f0 ',\
+                  ),\
+                  SizedBox(height: 16),\
+                  // Individual Post 3\
+                  _buildPost(\
+                    username: 'TravelBug',\
+                    postText:\
+                        'Exploring the streets of Tokyo, Japan. Such a vibrant and lively city! 
+\f1 \uc0\u55356 \u56815 \u55356 \u56821 
+\f0 ',\
+                  ),\
+                  SizedBox(height: 16),\
+                  // Individual Post 4\
+                  _buildPost(\
+                    username: 'NatureLover',\
+                    postText:\
+                        'Spent the weekend camping in the wilderness. Nature is so beautiful and peaceful! 
+\f1 \uc0\u55356 \u57301 \u65039 
+\f0 ',\
+                  ),\
+                ],\
+              ),\
+            ),\
+          ],\
+        ),\
+      ),\
+      // Add a button to create new posts\
+      floatingActionButton: FloatingActionButton(\
+        onPressed: () \{\
+          // Implement logic to create a new post\
+        \},\
+        child: Icon(Icons.add),\
+      ),\
+    );\
+  \}\
+\
+  // Widget to display an individual post\
+  Widget _buildPost(\{\
+    required String username,\
+    required String postText,\
+  \}) \{\
+    return Card(\
+      elevation: 4,\
+      shape: RoundedRectangleBorder(\
+        borderRadius: BorderRadius.circular(12),\
+      ),\
+      child: Column(\
+        crossAxisAlignment: CrossAxisAlignment.start,\
+        children: [\
+          ListTile(\
+            leading: CircleAvatar(\
+              backgroundImage: AssetImage('assets/images/user_avatar.jpg'),\
+            ),\
+            title: Text(username),\
+            // Add timestamp here\
+          ),\
+          Padding(\
+            padding: EdgeInsets.all(16),\
+            child: Text(postText),\
+          ),\
+          // Add like and comment buttons here\
+          // Add comments section here\
+        ],\
+      ),\
+    );\
+  \}\
+\}\
+\
+void main() \{\
+  runApp(MaterialApp(\
+    home: CommunityPage(),\
+  ));\
+\}\
+}
